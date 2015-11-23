@@ -1,0 +1,174 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "jacobic API",
+		"description": "This is an jacobicAPI, which is part of the English Language API Recipe Book.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "j.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"paths": {
+		"/jacobic/": {
+			"get": {
+				"summary": "jacobic item",
+				"description": "returns an jacobic item",
+				"operationId": "getjacobic",
+				"parameters": [{
+					"name": "q",
+					"in": "query",
+					"description": "Keyword search for item",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jacobic"]
+			},
+			"post": {
+				"summary": "jacobic item",
+				"description": "adds an jacobic item",
+				"operationId": "addjacobic",
+				"parameters": [{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jacobic"]
+			}
+		},
+		"/jacobic/{id}/": {
+			"get": {
+				"summary": "jacobic item",
+				"description": "returns a single jacobic item",
+				"operationId": "getjacobicItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jacobic"]
+			},
+			"put": {
+				"summary": "jacobic item",
+				"description": "update a single jacobic item",
+				"operationId": "updatejacobicItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				},
+				{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jacobic"]
+			},
+			"delete": {
+				"summary": "jacobic item",
+				"description": "deletes a single jacobic item",
+				"operationId": "deletejacobicItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jacobic"]
+			}
+		}
+	},
+	"definitions": {
+		"item": {
+			"properties": {
+				"name": {
+					"description": "The name of this item.",
+					"type": "string"
+				},
+				"description": {
+					"description": "The description of this item.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

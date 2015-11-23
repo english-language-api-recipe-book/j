@@ -1,0 +1,174 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "jonquil API",
+		"description": "This is an jonquilAPI, which is part of the English Language API Recipe Book.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "j.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"paths": {
+		"/jonquil/": {
+			"get": {
+				"summary": "jonquil item",
+				"description": "returns an jonquil item",
+				"operationId": "getjonquil",
+				"parameters": [{
+					"name": "q",
+					"in": "query",
+					"description": "Keyword search for item",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jonquil"]
+			},
+			"post": {
+				"summary": "jonquil item",
+				"description": "adds an jonquil item",
+				"operationId": "addjonquil",
+				"parameters": [{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jonquil"]
+			}
+		},
+		"/jonquil/{id}/": {
+			"get": {
+				"summary": "jonquil item",
+				"description": "returns a single jonquil item",
+				"operationId": "getjonquilItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jonquil"]
+			},
+			"put": {
+				"summary": "jonquil item",
+				"description": "update a single jonquil item",
+				"operationId": "updatejonquilItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				},
+				{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jonquil"]
+			},
+			"delete": {
+				"summary": "jonquil item",
+				"description": "deletes a single jonquil item",
+				"operationId": "deletejonquilItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jonquil"]
+			}
+		}
+	},
+	"definitions": {
+		"item": {
+			"properties": {
+				"name": {
+					"description": "The name of this item.",
+					"type": "string"
+				},
+				"description": {
+					"description": "The description of this item.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

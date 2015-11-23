@@ -1,0 +1,174 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "jagrata API",
+		"description": "This is an jagrataAPI, which is part of the English Language API Recipe Book.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "j.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"paths": {
+		"/jagrata/": {
+			"get": {
+				"summary": "jagrata item",
+				"description": "returns an jagrata item",
+				"operationId": "getjagrata",
+				"parameters": [{
+					"name": "q",
+					"in": "query",
+					"description": "Keyword search for item",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jagrata"]
+			},
+			"post": {
+				"summary": "jagrata item",
+				"description": "adds an jagrata item",
+				"operationId": "addjagrata",
+				"parameters": [{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jagrata"]
+			}
+		},
+		"/jagrata/{id}/": {
+			"get": {
+				"summary": "jagrata item",
+				"description": "returns a single jagrata item",
+				"operationId": "getjagrataItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jagrata"]
+			},
+			"put": {
+				"summary": "jagrata item",
+				"description": "update a single jagrata item",
+				"operationId": "updatejagrataItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				},
+				{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jagrata"]
+			},
+			"delete": {
+				"summary": "jagrata item",
+				"description": "deletes a single jagrata item",
+				"operationId": "deletejagrataItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jagrata"]
+			}
+		}
+	},
+	"definitions": {
+		"item": {
+			"properties": {
+				"name": {
+					"description": "The name of this item.",
+					"type": "string"
+				},
+				"description": {
+					"description": "The description of this item.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

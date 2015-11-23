@@ -1,0 +1,174 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "jabble API",
+		"description": "This is an jabbleAPI, which is part of the English Language API Recipe Book.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "j.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"paths": {
+		"/jabble/": {
+			"get": {
+				"summary": "jabble item",
+				"description": "returns an jabble item",
+				"operationId": "getjabble",
+				"parameters": [{
+					"name": "q",
+					"in": "query",
+					"description": "Keyword search for item",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jabble"]
+			},
+			"post": {
+				"summary": "jabble item",
+				"description": "adds an jabble item",
+				"operationId": "addjabble",
+				"parameters": [{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jabble"]
+			}
+		},
+		"/jabble/{id}/": {
+			"get": {
+				"summary": "jabble item",
+				"description": "returns a single jabble item",
+				"operationId": "getjabbleItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jabble"]
+			},
+			"put": {
+				"summary": "jabble item",
+				"description": "update a single jabble item",
+				"operationId": "updatejabbleItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				},
+				{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jabble"]
+			},
+			"delete": {
+				"summary": "jabble item",
+				"description": "deletes a single jabble item",
+				"operationId": "deletejabbleItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jabble"]
+			}
+		}
+	},
+	"definitions": {
+		"item": {
+			"properties": {
+				"name": {
+					"description": "The name of this item.",
+					"type": "string"
+				},
+				"description": {
+					"description": "The description of this item.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}

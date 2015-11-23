@@ -1,0 +1,174 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "jotter API",
+		"description": "This is an jotterAPI, which is part of the English Language API Recipe Book.",
+		"termsOfService": "http://apievangelist.com/terms-of-service.html",
+		"version": "v1"
+	},
+	"host": "j.example.com",
+	"basePath": "/",
+	"schemes": ["http"],
+	"produces": ["application/json"],
+	"paths": {
+		"/jotter/": {
+			"get": {
+				"summary": "jotter item",
+				"description": "returns an jotter item",
+				"operationId": "getjotter",
+				"parameters": [{
+					"name": "q",
+					"in": "query",
+					"description": "Keyword search for item",
+					"required": false,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jotter"]
+			},
+			"post": {
+				"summary": "jotter item",
+				"description": "adds an jotter item",
+				"operationId": "addjotter",
+				"parameters": [{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jotter"]
+			}
+		},
+		"/jotter/{id}/": {
+			"get": {
+				"summary": "jotter item",
+				"description": "returns a single jotter item",
+				"operationId": "getjotterItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jotter"]
+			},
+			"put": {
+				"summary": "jotter item",
+				"description": "update a single jotter item",
+				"operationId": "updatejotterItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				},
+				{
+					"name": "name",
+					"in": "formData",
+					"description": "Name of item",
+					"required": true,
+					"type": "string"
+				},
+				{
+					"name": "description",
+					"in": "formData",
+					"description": "Description of item",
+					"required": true,
+					"type": "string"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jotter"]
+			},
+			"delete": {
+				"summary": "jotter item",
+				"description": "deletes a single jotter item",
+				"operationId": "deletejotterItem",
+				"parameters": [{
+					"name": "id",
+					"in": "path",
+					"description": "Unique id for item",
+					"required": true,
+					"type": "integer"
+				}],
+				"responses": {
+					"200": {
+						"description": "A successful response.",
+						"schema": {
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/item"
+							}
+						}
+					}
+				},
+				"tags": ["jotter"]
+			}
+		}
+	},
+	"definitions": {
+		"item": {
+			"properties": {
+				"name": {
+					"description": "The name of this item.",
+					"type": "string"
+				},
+				"description": {
+					"description": "The description of this item.",
+					"type": "string"
+				}
+			}
+		}
+	}
+}
